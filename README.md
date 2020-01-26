@@ -127,3 +127,4 @@ Provide a Reset Filters button option to clear all the filters, for Date filters
 * Include the client in a static public folder on the same server port of the back end
 * Compile/Build the backend NestJS Application using npm run build command
 * The application should be runnable from the dist compiled folder using npm run main.js command.
+Thanks for the providing the challenge. I have one query when you mentioned reactive client does it means that you would like me to use RxJS.
