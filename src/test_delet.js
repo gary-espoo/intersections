@@ -71,18 +71,18 @@ function bubbleDown(minHeap, index) {
     let minChildIndex = findMinChildIndex(minHeap, leftIndex, rightIndex);
     let minChild = minChildIndex === undefined ? undefined : minHeap[minChildIndex];
 
-    while (minChild !== undefined && current.value.time > minChild.value.time) {
-        //while (minChild !== undefined && current.value > minChild.value) {
-        [minHeap[currentIndex], minHeap[minChildIndex]] = [minHeap[minChildIndex], minHeap[currentIndex]];
+    //while (minChild !== undefined && current.value.time > minChild.value.time) {
+    //while (minChild !== undefined && current.value > minChild.value) {
+    [minHeap[currentIndex], minHeap[minChildIndex]] = [minHeap[minChildIndex], minHeap[currentIndex]];
 
-        currentIndex = minChildIndex;
+    currentIndex = minChildIndex;
 
-        [leftIndex, rightIndex] = getChildIndices(currentIndex);
+    [leftIndex, rightIndex] = getChildIndices(currentIndex);
 
-        minChildIndex = findMinChildIndex(minHeap, leftIndex, rightIndex);
+    minChildIndex = findMinChildIndex(minHeap, leftIndex, rightIndex);
 
-        minChild = minChildIndex === undefined ? undefined : minHeap[minChildIndex];
-    }
+    minChild = minChildIndex === undefined ? undefined : minHeap[minChildIndex];
+}
 }
 
 // Just calls bubble down for every element in the heap, starting from the back
@@ -134,7 +134,7 @@ let arrs = [
         },
         {
 
-            time: '2020-01-2 01:45:00',
+            time: '2020-01-1 01:45:00',
             speed: 48
         },
     ]

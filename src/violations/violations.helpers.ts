@@ -10,7 +10,10 @@ const pageSize = 50;
 
 @Injectable()
 export class ViolationsStore {
+	initDataSet;
 	constructor() {
+		this.initDataSet = contents.slice(0, 2);
+		console.log(this.initDataSet);
 		this.sortViolations(contents[3].violations);
 		this.mapIntersections();
 	}
@@ -77,6 +80,10 @@ export class ViolationsStore {
 			data: this.getViolations(intersections, offset)
 		};
 		return result;
+	}
+
+	initData() {
+		return this.initDataSet;
 	}
 	//This function fetches all the zones from zone/zones
 	getIntrFromZones(zones: number[]): number[] {
