@@ -32,13 +32,6 @@ function mergeKSorted(arrays) {
     return result;
 }
 
-
-
-
-
-// Heap Helper functions
-// NOTE A lot of these are very similar to the methods used on Djikstra's Algorithm on 07.26
-
 // Simple formula for getting child indices
 function getChildIndices(index) {
     return [(2 * index) + 1, (2 * index) + 2];
@@ -54,8 +47,11 @@ function findMinChildIndex(minHeap, leftIndex, rightIndex) {
         if (rightChild === undefined) {
             minChildIndex = leftIndex;
         } else {
-            minChildIndex = Date.parse(rightChild.value.time) < Date.parse(leftChild.value.time) ? rightIndex : leftIndex;
-            //minChildIndex = rightChild.value < leftChild.value ? rightIndex : leftIndex;
+            if (leftChild.value == Infinity) {
+                minChildIndex = rightIndex;
+            } else {
+                minChildIndex = Date.parse(rightChild.value.time) < Date.parse(leftChild.value.time) ? rightIndex : leftIndex;
+            }
         }
     }
     return minChildIndex;
@@ -71,20 +67,20 @@ function bubbleDown(minHeap, index) {
     let minChildIndex = findMinChildIndex(minHeap, leftIndex, rightIndex);
     let minChild = minChildIndex === undefined ? undefined : minHeap[minChildIndex];
 
-    //while (minChild !== undefined && current.value.time > minChild.value.time) {
-    //while (minChild !== undefined && current.value > minChild.value) {
-    [minHeap[currentIndex], minHeap[minChildIndex]] = [minHeap[minChildIndex], minHeap[currentIndex]];
+    while (minChild !== undefined && (current.value == Infinity || Date.parse(current.value.time) > Date.parse(minChild.value.time))) {
 
-    currentIndex = minChildIndex;
+        [minHeap[currentIndex], minHeap[minChildIndex]] = [minHeap[minChildIndex], minHeap[currentIndex]];
 
-    [leftIndex, rightIndex] = getChildIndices(currentIndex);
+        currentIndex = minChildIndex;
 
-    minChildIndex = findMinChildIndex(minHeap, leftIndex, rightIndex);
+        [leftIndex, rightIndex] = getChildIndices(currentIndex);
 
-    minChild = minChildIndex === undefined ? undefined : minHeap[minChildIndex];
+        minChildIndex = findMinChildIndex(minHeap, leftIndex, rightIndex);
+
+        minChild = minChildIndex === undefined ? undefined : minHeap[minChildIndex];
+    }
+
 }
-}
-
 // Just calls bubble down for every element in the heap, starting from the back
 function heapify(minHeap) {
     for (let i = minHeap.length - 1; i >= 0; i--) {
@@ -92,21 +88,6 @@ function heapify(minHeap) {
     }
 }
 
-
-
-// let arrs = [
-//         [
-//             {
-//                 a:5
-//             }
-//         ]
-//     ,
-//     {
-//         [3, 4, ]
-//     },
-
-
-// ];
 
 
 let arrs = [
@@ -119,13 +100,23 @@ let arrs = [
             time: '2020-01-1 04:45:00',
             speed: 80
         },
-        {
 
-            time: '2020-01-1 22:35:00',
-            speed: 62
-        }
     ],
 
+    [{
+
+            time: '2021-01-1 01:04:00',
+            speed: 81,
+
+        },
+        {
+
+            time: '2031-01-1 01:04:00',
+            speed: 81,
+
+        }
+
+    ],
     [{
 
             time: '2020-01-1 01:04:00',
@@ -134,10 +125,13 @@ let arrs = [
         },
         {
 
-            time: '2020-01-1 01:45:00',
-            speed: 48
-        },
-    ]
+            time: '2022-01-1 01:04:00',
+            speed: 81,
+
+        }
+
+    ],
+
 
 ]
 

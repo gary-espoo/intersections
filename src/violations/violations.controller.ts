@@ -4,6 +4,7 @@ import { DataQuery } from './interface/dataquery.interface';
 @Controller('api/violations')
 export class ViolationsController {
 	constructor(private readonly violationsService: ViolationsService) {}
+
 	@Get('init')
 	getInitData(): any {
 		return this.violationsService.getInitialData();

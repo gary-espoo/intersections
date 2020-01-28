@@ -3,7 +3,7 @@ import { join } from 'path';
 import { readFileSync } from 'fs';
 import { Violation } from './interface/violation.interface';
 import { DataQuery } from './interface/dataquery.interface';
-import { MinheapHelper } from './minheap.helper';
+import { MergeKSorted } from './mergeksorted.helper';
 
 var contents = JSON.parse(readFileSync(join(process.cwd(), 'data', 'data.json'), 'utf8'));
 const pageSize = 50;
@@ -13,7 +13,6 @@ export class ViolationsStore {
 	initDataSet;
 	constructor() {
 		this.initDataSet = contents.slice(0, 2);
-		console.log(this.initDataSet);
 		this.sortViolations(contents[3].violations);
 		this.mapIntersections();
 	}
@@ -68,8 +67,6 @@ export class ViolationsStore {
 					break;
 			}
 		});
-		console.log(violations1.slice(0, 15));
-		console.log(violations2.slice(0, 15));
 	}
 
 	findAll(query: DataQuery): any {
