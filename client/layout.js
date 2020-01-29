@@ -8,7 +8,8 @@ import { isAfter } from 'date-fns';
 class Layout extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { startDate:undefined, endDate:undefined, projects:null, zones:null ,data: [], filters: [{ projects: [] }, { zones: [] }] }
+    this.state = { startDate:undefined, endDate:undefined, projects:null, zones:null ,intersections:null, data: [], filters: [{ projects: [] }, 
+    { zones: [] },{intersections:[]}] }
   };
 
   async componentDidMount() {
@@ -20,6 +21,7 @@ class Layout extends React.Component {
   onChangeHandler(type, payload) {
     this.setState({[type]:payload});
   };
+
   async onSearch() {
     const {startDate,endDate,projects,zones} =this.state;
     if(isAfter(new Date(startDate), new Date(endDate))){
@@ -30,6 +32,7 @@ class Layout extends React.Component {
     }
   }
   render() {
+
     return (
       <div className="main-screen">
         <div className='layout-two width40'>

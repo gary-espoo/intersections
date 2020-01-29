@@ -12,7 +12,8 @@ const pageSize = 50;
 export class ViolationsStore {
 	initDataSet;
 	constructor() {
-		this.initDataSet = contents.slice(0, 2);
+		this.initDataSet = JSON.parse(JSON.stringify(contents.slice(0, 3)));
+		console.log(this.initDataSet);
 		this.sortViolations(contents[3].violations);
 		this.mapIntersections();
 	}

@@ -1,18 +1,19 @@
-function request (url) { 
+function request(url) {
     return new Request(url, {
-    method: 'GET',
-    mode: 'cors',
-    redirect: 'follow',
-    headers: new Headers({
-        'Content-Type': 'text/plain'
-    })
-});}
+        method: 'GET',
+        mode: 'cors',
+        redirect: 'follow',
+        headers: new Headers({
+            'Content-Type': 'text/plain'
+        })
+    });
+}
 
- async function  getInterSection (url) {
+async function getInterSection(url) {
     // Now use it! http://localhost:3000/api/violations?intersections=1&startTime=121212112&endTime=121212121&projects=1,2
     return await fetch(request(url)).then(function (response) {
         return response.json();
-    }).then(item=>{
+    }).then(item => {
         return item;
     }).catch(function (err) {
         console.log(' err: ', err);
@@ -23,10 +24,10 @@ function request (url) {
 }
 
 
-async function  filters () {
-    return await fetch(request('http://localhost:3000/api/violations/init')).then(function (response) {
+async function filters() {
+    return await fetch(request('/api/violations/init')).then(function (response) {
         return response.json();
-    }).then(item=>{
+    }).then(item => {
         return item;
     }).catch(function (err) {
         console.log(' err: ', err);
@@ -36,4 +37,7 @@ async function  filters () {
 
 }
 
-export default {getInterSection, filters};
+export default {
+    getInterSection,
+    filters
+};

@@ -12,7 +12,7 @@ function FilterPanel( props) {
 
                     <Select onChangeHandler={props.onChangeHandler} data={props.filters[0].projects } type={'projects'} default="Please Select Project"/>
                     <Select onChangeHandler={props.onChangeHandler} data={props.filters[1].zones }  type={'zones'}  default="Please Select Region/Place"/>
-                    {/* <Select data={region} default="Please Intersection"/> */}
+                    <Select onChangeHandler={props.onChangeHandler} data={props.filters[2].intersections } type={'intersections'} default="Please Select Intersection"/> 
                     
                     <button>Reset filter</button> 
                     <button onClick={props.onSearch}>search</button>
