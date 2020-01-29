@@ -20,6 +20,8 @@ class Layout extends React.Component {
   
   onChangeHandler(type, payload) {
     this.setState({[type]:payload});
+    console.log("searching")
+    //onsearch
   };
 
   async onSearch() {
@@ -30,6 +32,10 @@ class Layout extends React.Component {
       const data = await callAPI.getInterSection(`/api/violations?intersections=1&startTime=121212112&endTime=121212121&projects=${projects}`);
     this.setState({ data: data.data});
     }
+  }
+
+   onReset() {
+    
   }
   render() {
 

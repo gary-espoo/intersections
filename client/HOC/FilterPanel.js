@@ -14,8 +14,8 @@ function FilterPanel( props) {
                     <Select onChangeHandler={props.onChangeHandler} data={props.filters[1].zones }  type={'zones'}  default="Please Select Region/Place"/>
                     <Select onChangeHandler={props.onChangeHandler} data={props.filters[2].intersections } type={'intersections'} default="Please Select Intersection"/> 
                     
-                    <button>Reset filter</button> 
-                    <button onClick={props.onSearch}>search</button>
+                    <button  onClick={props.onReset} > Reset filter</button> 
+                    
                     
                 </div>
             </div>
