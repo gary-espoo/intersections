@@ -10,11 +10,12 @@ function FilterPanel( props) {
                 <div className="form">
                     <Date onChangeHandler={props.onChangeHandler} startDate={props.startDate} endDate={props.endDate}  />
 
-                    <Select onChangeHandler={props.onChangeHandler} data={props.filters[0].projects } type={'projects'} default="Please Select Project"/>
-                    <Select onChangeHandler={props.onChangeHandler} data={props.filters[1].zones }  type={'zones'}  default="Please Select Region/Place"/>
-                    <Select onChangeHandler={props.onChangeHandler} data={props.filters[2].intersections } type={'intersections'} default="Please Select Intersection"/> 
+                    <Select onChangeHandler={props.onChangeHandler} data={props.filterProjects } type={'projects'} default="Please Select Project"/>
+                    <Select onChangeHandler={props.onChangeHandler} data={props.filterZones }  type={'zones'}  default="Please Select Region/Place"/>
+                    <Select onChangeHandler={props.onChangeHandler} data={props.filterIntersections } type={'intersections'} default="Please Select Intersection"/> 
                     
                     <button  onClick={props.onReset} > Reset filter</button> 
+                    <button  onClick={props.onSearch} > Search</button> 
                     
                     
                 </div>

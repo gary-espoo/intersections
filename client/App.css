@@ -1,3 +1,11 @@
+.flexCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex1{
+  flex:1;
+}
 .main-screen {
   display: flex;
   width: 100vw;
