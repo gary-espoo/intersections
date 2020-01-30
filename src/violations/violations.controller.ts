@@ -10,7 +10,7 @@ export class ViolationsController {
 
     @Get('init')
     getFilters() : any {
-        console.log(111)
+
         return this
             .violationsService
             .getFilters();
@@ -37,7 +37,7 @@ export class ViolationsController {
             query['intersections'] = [1, 2, 3, 4];
         }
 
-        console.log(query);
+
         return query;
     }
 }
