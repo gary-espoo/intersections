@@ -1,12 +1,16 @@
-import {Controller, Get, Query} from '@nestjs/common';
+import {UseInterceptors,CacheInterceptor,Controller, Get, Query} from '@nestjs/common';
 import {ViolationsService} from './violations.service';
-import {DataQuery} from './interface/dataquery.interface';
+
+
+//Cache added 
+@UseInterceptors(CacheInterceptor)
 @Controller('api/violations')
 export class ViolationsController {
     constructor(private readonly violationsService : ViolationsService) {}
 
     @Get('init')
     getFilters() : any {
+        console.log(111)
         return this
             .violationsService
             .getFilters();

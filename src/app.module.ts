@@ -1,4 +1,4 @@
-import {CacheModule, Module} from '@nestjs/common';
+import { Module} from '@nestjs/common';
 import {AppController} from './app.controller';
 import {AppService} from './app.service';
 import {join} from 'path';
@@ -10,7 +10,6 @@ import {ViolationsModule} from './violations/violations.module';
         ServeStaticModule.forRoot({
             rootPath: join(__dirname, '..', 'client')
         }),
-        CacheModule.register(),
         ViolationsModule
     ],
     controllers: [AppController],

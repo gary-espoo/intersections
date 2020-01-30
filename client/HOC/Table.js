@@ -11,6 +11,7 @@ const Table = props => {
     const transformData = (inp, day) => {
         inp.map(item => {
             if (props.day.length>0) {
+                console.log(new Date(item.time).getDay())
                 if (new Date(item.time).getDay() in day) {
 
                     tempData.avg += item.speed;
@@ -56,6 +57,7 @@ const Table = props => {
     // if(props.day && props.day>-1 && props.day<7){
     const {avg, data} = transformData(props.tableData, props.day);
 
+    console.log(data.length)
     return (
         <div className="filter-panel width100">
             <div className="card">

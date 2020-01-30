@@ -104,7 +104,7 @@ class Layout extends React.Component {
 
     async onSearch() {
         const {startDate, endDate, projects, intersections} = this.state;
-
+        
         if (isAfter(new Date(startDate), new Date(endDate))) {
 
             alert('please check start and end DateTime');
@@ -146,7 +146,7 @@ class Layout extends React.Component {
         });
     }
     render() {
-
+        console.log(this.state.data)
         return (
             <div className="main-screen">
                 <div className='layout-two width40'>

@@ -100,11 +100,11 @@ export class ViolationsStore {
     }
 
     findAll(query : DataQuery) : any {
-        let {projects, intersections, startTime, endTime} = query;
+        let { intersections, startTime, endTime} = query;
+        let data = this.getViolations(intersections, startTime, endTime)
         let result = {
-            offset: 0,
-            count: 0,
-            data: this.getViolations(intersections, startTime, endTime)
+            count: data.length,            
+            data:data,            
         };
         return result;
     }
@@ -227,30 +227,32 @@ export class ViolationsStore {
                     break;
             }
         });
-
+        if(intersections.length == 1){
+            return result.flat();
+        }
         //Merge the subsets
         result = this
             .mergerService
             .merge(result);
 
-        if (intersections.length === 1) {
-            switch (intersections[0] - 1) {
-                case 0:
-                    result = intersectionOne;
-                    break;
-                case 1:
-                    result = intersectionTwo;
-                    break;
+        // if (intersections.length === 1) {
+        //     switch (intersections[0] - 1) {
+        //         case 0:
+        //             result = intersectionOne;
+        //             break;
+        //         case 1:
+        //             result = intersectionTwo;
+        //             break;
 
-                case 2:
-                    result = intersectionThree;
-                    break;
+        //         case 2:
+        //             result = intersectionThree;
+        //             break;
 
-                case 3:
-                    result = intersectionFour;
-                    break;
-            }
-        }
+        //         case 3:
+        //             result = intersectionFour;
+        //             break;
+        //     }
+        // }
 
         return result;
     }
