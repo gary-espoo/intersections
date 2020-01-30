@@ -3,16 +3,16 @@ import Select from '../components/Select';
 
 const Table = props => {
 
-    const tempData = {
-        avg: 0,
-        data: []
-    };
 
-    const transformData = (inp, day) => {
-        inp.map(item => {
+    const transformData = (inpDays, daysSelected) => {
+        const tempData = {
+            avg: 0,
+            data: []
+        };
+        inpDays.map(item => {
             if (props.day.length>0) {
-                console.log(new Date(item.time).getDay())
-                if (new Date(item.time).getDay() in day) {
+                
+                if (new Date(item.time).getDay() in daysSelected) {
 
                     tempData.avg += item.speed;
                     tempData
@@ -57,7 +57,7 @@ const Table = props => {
     // if(props.day && props.day>-1 && props.day<7){
     const {avg, data} = transformData(props.tableData, props.day);
 
-    console.log(data.length)
+
     return (
         <div className="filter-panel width100">
             <div className="card">

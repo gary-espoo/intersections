@@ -16,7 +16,7 @@ async function getViolations(params=null) {
     if(params){        
         url = url.concat(params);
     } 
-    console.log('calling' + url)
+
     return await fetch(request(url)).then(function (response) {
         return response.json();
     }).then(item => {

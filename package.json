@@ -85,9 +85,10 @@
     "watch": [
       "src",
       "client/components/index.js",
-      "client/components/App.js"
+      "client/components/App.js",
+      "client/HOC/Table.js"
     ],
     "exec": "npm start",
-    "ext": "ts js"
+    "ext": "[ts js]"
   }
 }

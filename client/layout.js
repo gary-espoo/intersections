@@ -84,10 +84,7 @@ class Layout extends React.Component {
                 const intersections = uniqBy(payload.map(item=>{
                     return this.extractFilters(item, 'intersections', this.initData);
                 }).flat(), 'id');
-                // payload.reduce(item=>{
-                //     return this.extractFilters(item, 'intersections', this.initData);
-                // }); 
-                // this.extractFilters(payload, 'intersections', this.initData);
+                
                 this.setState({
                     [type]: payload,
                     filterIntersections: intersections,
@@ -146,7 +143,7 @@ class Layout extends React.Component {
         });
     }
     render() {
-        console.log(this.state.data)
+
         return (
             <div className="main-screen">
                 <div className='layout-two width40'>
